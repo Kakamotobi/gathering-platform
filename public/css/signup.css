@@ -1,10 +1,11 @@
-root {
+:root {
 	--ltGreen: #e7f8f1;
 	--green: #45df99;
 	--drkGreen: #3cc584;
 	--red: #f74135;
 	--white: #fff;
-	--ltGrey: #e5e9e8;
+	--ltGrey: #f9fafc;
+	--grey: #cbcbcb;
 	--drkGrey: #6d6e74;
 }
 
@@ -14,4 +15,116 @@ root {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--ltGrey);
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+/* Header */
+header {
+	margin: 40px auto 40px;
+}
+
+.logo {
+	font-size: 1.6rem;
+	color: var(--drkGreen);
+	text-decoration: none;
+}
+
+/* Main */
+.signup-form {
+	width: 100%;
+}
+
+.form-container {
+	width: 100%;
+	max-width: 360px;
+	padding: 25px 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+	border-radius: 3px;
+	box-shadow: 0 0 5px var(--grey);
+}
+
+h1 {
+	margin-bottom: 40px;
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.signup-form__input-control {
+	width: 100%;
+	height: 30px;
+	margin-bottom: 20px;
+	border: none;
+	border-bottom: 1px solid var(--grey);
+	outline: none;
+	font-family: "Noto Sans KR", sans-serif;
+	transition: 250ms;
+}
+
+.signup-form__input-control:hover {
+	border-color: var(--drkGrey);
+}
+
+.signup-form-control:last-of-type > .signup-form__input-control {
+	margin-bottom: 30px;
+}
+
+.signup-form-btn {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: var(--green);
+	border: 1px solid var(--green);
+	border-radius: 3px;
+	color: var(--white);
+	cursor: pointer;
+	transition: 250ms;
+}
+
+.signup-form-btn:hover {
+	background-color: var(--drkGreen);
+}
+
+.already-signed-up {
+	text-decoration: none;
+	font-size: 0.8rem;
+}
+
+.already-signed-up:hover {
+	text-decoration: underline;
+}
+
+/* Error Styles */
+.error-icon {
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	display: none;
+}
+
+.show-error-icon {
+	display: block;
+}
+
+.error-msg {
+	text-align: right;
+	color: var(--red);
+	font-size: 0.8rem;
+	font-style: italic;
+}
+
+@media screen and (max-width: 425px) {
+	.form-container {
+		max-width: 320px;
+	}
 }
