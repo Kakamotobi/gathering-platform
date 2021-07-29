@@ -22,7 +22,11 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: var(--ltGrey);
+	background-image: url(/assets/images/workout.jpg),
+		url(/assets/images/programming.jpg);
+	background-size: 300px 300px;
+	background-position: bottom 10px left 50px, bottom 10px right 50px;
+	background-repeat: no-repeat;
 	font-family: "Noto Sans KR", sans-serif;
 }
 
@@ -121,6 +125,27 @@ h1 {
 	color: var(--red);
 	font-size: 0.8rem;
 	font-style: italic;
+}
+
+/* Footer */
+.attribution {
+	text-align: center;
+	font-size: 0.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+	body {
+		background-size: 30%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	body {
+		background-image: none;
+	}
+	.attribution {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 425px) {
