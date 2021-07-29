@@ -1,0 +1,17 @@
+root {
+	--ltGreen: #e7f8f1;
+	--green: #45df99;
+	--drkGreen: #3cc584;
+	--red: #f74135;
+	--white: #fff;
+	--ltGrey: #e5e9e8;
+	--drkGrey: #6d6e74;
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
