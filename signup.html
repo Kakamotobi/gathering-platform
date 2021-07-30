@@ -25,7 +25,12 @@
 
 		<main class="form-container">
 			<h1>회원가입</h1>
-			<form action="/" class="signup-form" novalidate>
+			<form
+				action="/"
+				method="POST"
+				class="signup-form"
+				novalidate
+			>
 				<div class="signup-form-control">
 					<input
 						type="text"
@@ -33,6 +38,7 @@
 						aria-label="아이디"
 						class="signup-form__input-control"
 						id="user-id"
+						name="userId"
 					/>
 					<img
 						src="assets/icon-error.svg"
@@ -49,6 +55,7 @@
 						aria-label="생년월일"
 						class="signup-form__input-control"
 						id="birthdate"
+						name="birthdate"
 					/>
 					<img
 						src="assets/icon-error.svg"
@@ -65,6 +72,7 @@
 						aria-label="이메일 주소"
 						class="signup-form__input-control"
 						id="email"
+						name="email"
 					/>
 					<img
 						src="assets/icon-error.svg"
@@ -81,6 +89,7 @@
 						aria-label="비밀번호"
 						class="signup-form__input-control"
 						id="password"
+						name="password"
 					/>
 					<img
 						src="assets/icon-error.svg"
@@ -97,6 +106,7 @@
 						aria-label="비밀번호"
 						class="signup-form__input-control"
 						id="password-confirmation"
+						name="passwordConfirmation"
 					/>
 					<img
 						src="assets/icon-error.svg"
