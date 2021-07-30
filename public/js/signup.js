@@ -5,13 +5,35 @@ const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const passwordConfirmation = document.querySelector("#password-confirmation");
 
-signupForm.addEventListener("submit", (evt) => {
+signupForm.addEventListener("submit", async (evt) => {
 	evt.preventDefault();
 	checkInputs();
+
+	// Make a new FormData object based on the key-value pairs of this form (input name and value).
+	let formData = new FormData(signupForm);
+
+	// for (let key of formData.keys()) {
+	// 	console.log(key, formData.get(key));
+	// }
+
+	await fetch("/", {
+		method: "POST",
+		body: formData,
+	})
+		.then((res) => {
+			return res.text();
+		})
+		.then((text) => {
+			console.log(text);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+
+	resetInputs();
 });
 
 // -----Functions----- //
-
 // --Function for checking inputs-- //
 checkInputs = () => {
 	// Extract values from the inputs
@@ -67,7 +89,10 @@ checkInputs = () => {
 	} else {
 		setSuccessFor(passwordConfirmation);
 	}
+};
 
+// --Function for resetting inputs-- //
+resetInputs = () => {
 	// If all requirements are met, reset the form
 	const allInputs = document.querySelectorAll(".signup-form__input-control");
 	const allInputsArr = [...allInputs];
@@ -78,7 +103,6 @@ checkInputs = () => {
 };
 
 // -----Utility Functions----- //
-
 // --Function for setting error-- //
 setErrorFor = (input, message) => {
 	const errorIcon = input.parentElement.querySelector(".error-icon");
@@ -96,7 +120,7 @@ setErrorFor = (input, message) => {
 };
 
 // --Function for success-- //
-function setSuccessFor(input) {
+setSuccessFor = (input) => {
 	const errorIcon = input.parentElement.querySelector(".error-icon");
 	const errorMsg = input.parentElement.querySelector(".error-msg");
 
@@ -109,7 +133,7 @@ function setSuccessFor(input) {
 
 	// Remove error msg
 	errorMsg.innerText = "";
-}
+};
 
 // --Email Validity Check-- //
 function isValidEmail(emailValue) {
