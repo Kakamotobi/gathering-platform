@@ -42,9 +42,6 @@ header {
 }
 
 /* Main */
-.signup-form {
-	width: 100%;
-}
 
 .form-container {
 	width: 100%;
@@ -64,10 +61,23 @@ h1 {
 	font-weight: 500;
 }
 
+.signup-form {
+	width: 100%;
+}
+
+.signup-form-control {
+	height: 55px;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.signup-form-control:last-of-type {
+	margin-bottom: 20px;
+}
+
 .signup-form__input-control {
 	width: 100%;
 	height: 30px;
-	margin-bottom: 20px;
 	border: none;
 	border-bottom: 1px solid var(--grey);
 	outline: none;
@@ -77,10 +87,6 @@ h1 {
 
 .signup-form__input-control:hover {
 	border-color: var(--drkGrey);
-}
-
-.signup-form-control:last-of-type > .signup-form__input-control {
-	margin-bottom: 30px;
 }
 
 .signup-form-btn {
@@ -111,10 +117,15 @@ h1 {
 
 /* Error Styles */
 .error-icon {
+	width: 15px;
 	position: absolute;
-	right: 20px;
-	top: 15px;
+	right: 10px;
+	top: 8px;
 	display: none;
+}
+
+.signup-form-control:nth-of-type(2) > .error-icon {
+	right: 25px;
 }
 
 .show-error-icon {
