@@ -67,7 +67,7 @@ checkInputs = () => {
 		setErrorFor(nickname, "사용하실 닉네임을 입력해주세요");
 	} else if (nickname.value.length < 1 || nicknameValue.length > 15) {
 		setErrorFor(nickname, "최소 1자리, 최대 15자리를 입력해주세요");
-	} else if (/[^a-zA-Z]/.test(nicknameValue)) {
+	} else if (/[^a-zA-Zㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(nicknameValue)) {
 		setErrorFor(nickname, "영문 또는 한글만 입력해주세요");
 	} else {
 		setSuccessFor(nickname);
