@@ -34,11 +34,28 @@
 				<div class="signup-form-control">
 					<input
 						type="text"
-						placeholder="아이디"
+						placeholder="아이디 (영문, 숫자만 가능)"
 						aria-label="아이디"
 						class="signup-form__input-control"
 						id="user-id"
 						name="userId"
+					/>
+					<img
+						src="assets/icon-error.svg"
+						alt="Error Icon"
+						class="error-icon"
+					/>
+					<div class="error-msg"></div>
+				</div>
+
+				<div class="signup-form-control">
+					<input
+						type="text"
+						placeholder="닉네임 (영문 또는 한글)"
+						aria-label="닉네임"
+						class="signup-form__input-control"
+						id="nickname"
+						name="nickname"
 					/>
 					<img
 						src="assets/icon-error.svg"

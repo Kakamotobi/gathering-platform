@@ -1,5 +1,6 @@
 const signupForm = document.querySelector(".signup-form");
 const userId = document.querySelector("#user-id");
+const nickname = document.querySelector("#nickname");
 const birthdate = document.querySelector("#birthdate");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
@@ -38,6 +39,7 @@ signupForm.addEventListener("submit", async (evt) => {
 checkInputs = () => {
 	// Extract values from the inputs
 	const userIdValue = userId.value;
+	const nicknameValue = nickname.value;
 	const birthdateValue = birthdate.value;
 	const emailValue = email.value;
 	const passwordValue = password.value;
@@ -45,13 +47,24 @@ checkInputs = () => {
 
 	// User ID
 	if (userIdValue === "") {
-		// add error class and error message
 		setErrorFor(userId, "사용하실 아이디를 입력해주세요");
-	} else if (userIdValue.length < 6) {
-		setErrorFor(userId, "최소 6자리를 입력해주세요");
+	} else if (userIdValue.length < 5 || userIdValue.length > 15) {
+		setErrorFor(userId, "최소 5자리, 최대 15자리를 입력해주세요");
+	} else if (/[^a-zA-Z0-9]/.test(userIdValue)) {
+		setErrorFor(userId, "영문, 숫자만 입력해주세요");
 	} else {
-		// add success class
 		setSuccessFor(userId);
+	}
+
+	// Nickname
+	if (nicknameValue === "") {
+		setErrorFor(nickname, "사용하실 닉네임을 입력해주세요");
+	} else if (nickname.value.length < 1 || nicknameValue.length > 15) {
+		setErrorFor(nickname, "최소 1자리, 최대 15자리를 입력해주세요");
+	} else if (/[^a-zA-Z]/.test(nicknameValue)) {
+		setErrorFor(nickname, "영문 또는 한글만 입력해주세요");
+	} else {
+		setSuccessFor(nickname);
 	}
 
 	// Birthdate
