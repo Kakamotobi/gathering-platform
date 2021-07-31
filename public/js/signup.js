@@ -13,6 +13,9 @@ signupForm.addEventListener("submit", async (evt) => {
 	// Make a new FormData object based on the key-value pairs of this form (input name and value).
 	let formData = new FormData(signupForm);
 
+	let born = formData.get("born").replace(/-/g, "");
+	formData.set("born", born);
+
 	formData.delete("pwConfirmation");
 
 	// for (let key of formData.keys()) {
@@ -24,10 +27,11 @@ signupForm.addEventListener("submit", async (evt) => {
 		body: formData,
 	})
 		.then((res) => {
-			return res.text();
+			res.json();
 		})
-		.then((text) => {
-			console.log(text);
+		.then((data) => {
+			console.log("Response from server");
+			console.log(data);
 		})
 		.catch((err) => {
 			console.log(err);
