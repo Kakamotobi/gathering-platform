@@ -1,3 +1,5 @@
+"use strict";
+
 const signupForm = document.querySelector(".signup-form");
 const userId = document.querySelector("#user-id");
 const nickname = document.querySelector("#nickname");
@@ -11,16 +13,16 @@ signupForm.addEventListener("submit", async (evt) => {
 	checkInputs();
 
 	// Make a new FormData object based on the key-value pairs of this form (input name and value).
-	let formData = new FormData(signupForm);
+	const formData = new FormData(signupForm);
 
-	let born = formData.get("born").replace(/-/g, "");
+	const born = formData.get("born").replace(/-/g, "");
 	formData.set("born", born);
 
 	formData.delete("pwConfirmation");
 
-	// for (let key of formData.keys()) {
-	// 	console.log(key, formData.get(key));
-	// }
+	for (let key of formData.keys()) {
+		console.log(key, formData.get(key));
+	}
 
 	await fetch("/", {
 		method: "POST",
@@ -42,7 +44,7 @@ signupForm.addEventListener("submit", async (evt) => {
 
 // -----Functions----- //
 // --Function for checking inputs-- //
-checkInputs = () => {
+const checkInputs = () => {
 	// Extract values from the inputs
 	const userIdValue = userId.value;
 	const nicknameValue = nickname.value;
@@ -111,7 +113,7 @@ checkInputs = () => {
 };
 
 // --Function for resetting inputs-- //
-resetInputs = () => {
+const resetInputs = () => {
 	// If all requirements are met, reset the form
 	const allInputs = document.querySelectorAll(".signup-form__input-control");
 	const allInputsArr = [...allInputs];
@@ -123,7 +125,7 @@ resetInputs = () => {
 
 // -----Utility Functions----- //
 // --Function for setting error-- //
-setErrorFor = (input, message) => {
+const setErrorFor = (input, message) => {
 	const errorIcon = input.parentElement.querySelector(".error-icon");
 	const errorMsg = input.parentElement.querySelector(".error-msg");
 
@@ -139,7 +141,7 @@ setErrorFor = (input, message) => {
 };
 
 // --Function for success-- //
-setSuccessFor = (input) => {
+const setSuccessFor = (input) => {
 	const errorIcon = input.parentElement.querySelector(".error-icon");
 	const errorMsg = input.parentElement.querySelector(".error-msg");
 
