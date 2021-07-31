@@ -13,6 +13,8 @@ signupForm.addEventListener("submit", async (evt) => {
 	// Make a new FormData object based on the key-value pairs of this form (input name and value).
 	let formData = new FormData(signupForm);
 
+	formData.delete("pwConfirmation");
+
 	// for (let key of formData.keys()) {
 	// 	console.log(key, formData.get(key));
 	// }
