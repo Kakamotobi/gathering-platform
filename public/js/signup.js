@@ -24,9 +24,12 @@ signupForm.addEventListener("submit", async (evt) => {
 		console.log(key, formData.get(key));
 	}
 
-	await fetch("/", {
+	await fetch("http://3.34.235.190:8080/user/signUp", {
 		method: "POST",
-		body: formData,
+		body: JSON.stringify(Object.fromEntries(formData)),
+		headers: {
+			"Content-Type": "application/json",
+		},
 	})
 		.then((res) => {
 			res.json();
@@ -78,6 +81,10 @@ const checkInputs = () => {
 	// Birthdate
 	if (birthdateValue === "") {
 		setErrorFor(birthdate, "생년월일을 입력해주세요");
+	} else if (
+		/(19|20)\\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])/.test(birthdateValue)
+	) {
+		setErrorFor(birthdate, "올바른 생년월일을 입력해주세요");
 	} else {
 		setSuccessFor(birthdate);
 	}
