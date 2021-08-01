@@ -20,10 +20,6 @@ signupForm.addEventListener("submit", async (evt) => {
 
 	formData.delete("pwConfirmation");
 
-	for (let key of formData.keys()) {
-		console.log(key, formData.get(key));
-	}
-
 	await fetch("http://3.34.235.190:8080/user/signUp", {
 		method: "POST",
 		body: JSON.stringify(Object.fromEntries(formData)),
