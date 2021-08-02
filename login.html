@@ -14,11 +14,66 @@
 		/>
 
 		<!-- Stylesheet -->
-		<link rel="stylesheet" href="public/css/signup.css" />
+		<link rel="stylesheet" href="public/css/login.css" />
 
 		<title>Log In | gathering-platform</title>
 	</head>
 	<body>
+		<header>
+			<a href="/" class="logo">Gathering Platform</a>
+		</header>
 
+		<main class="form-container">
+			<h1>로그인</h1>
+			<form method="POST" class="signup-form" novalidate>
+				<div class="signup-form-control">
+					<input
+						type="text"
+						placeholder="아이디"
+						aria-label="아이디"
+						class="signup-form__input-control"
+						id="user-id"
+						name="id"
+					/>
+					<img
+						src="assets/icon-error.svg"
+						alt="Error Icon"
+						class="error-icon"
+					/>
+					<div class="error-msg"></div>
+				</div>
+
+				<div class="signup-form-control">
+					<input
+						type="password"
+						placeholder="비밀번호"
+						aria-label="비밀번호"
+						class="signup-form__input-control"
+						id="password"
+						name="pw"
+					/>
+					<img
+						src="assets/icon-error.svg"
+						alt="Error Icon"
+						class="error-icon"
+					/>
+					<div class="error-msg"></div>
+				</div>
+
+				<button type="submit" class="signup-form-btn">로그인하기</button>
+			</form>
+		</main>
+
+		<footer class="attribution">
+			<a
+				href="https://www.freepik.com/vectors/technology"
+				class="attribution-links"
+				>Technology vector created by stories - www.freepik.com</a
+			>
+			<br />
+			<a href="https://www.freepik.com/vectors/sports" class="attribution-links"
+				>Sports vector created by stories - www.freepik.com</a
+			>
+		</footer>
 	</body>
 </html>
