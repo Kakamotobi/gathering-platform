@@ -10,19 +10,16 @@ loginForm.addEventListener("submit", async (evt) => {
 	// Make a new FormData object based on the key-value pairs of this form (input name and value).
 	const formData = new FormData(loginForm);
 
-	await fetch("http://3.34.235.190:8080/user/login", {
+	await fetch("http://3.34.235.190:8080/user/logIn", {
 		method: "POST",
 		body: JSON.stringify(Object.fromEntries(formData)),
 		headers: {
 			"Content-Type": "application/json",
 		},
 	})
-		.then((res) => {
-			res.json();
-		})
-		.then((data) => {
-			console.log("Response from server");
-			console.log(data);
+		.then(async (res) => {
+			const { AccessToken } = await res.json();
+			console.log(AccessToken);
 		})
 		.catch((err) => {
 			console.log(err);
