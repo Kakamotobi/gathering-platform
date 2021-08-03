@@ -6,7 +6,7 @@
 	--white: #fff;
 	--vryLttGrey: #f9fafc;
 	--ltGrey: #cbcbcb;
-  --grey: #ababab;
+	--grey: #ababab;
 	--drkGrey: #6d6e74;
 }
 
@@ -51,16 +51,24 @@ body {
 	font-size: 20px;
 }
 
+.navbar-inner-wrapper {
+	display: flex;
+}
+
+.navbar__search {
+	margin-right: 30px;
+}
+
 .navbar__search__input {
 	background-color: transparent;
 	border: none;
 	border-bottom: 1px solid var(--grey);
 	font-size: 1rem;
-  transition: 250ms;
+	transition: 250ms;
 }
 
 .navbar__search__input:hover {
-  border-color: var(--drkGrey);
+	border-color: var(--drkGrey);
 }
 
 #navbar__search__btn {
@@ -68,6 +76,14 @@ body {
 	border: none;
 	font-size: 16px;
 	cursor: pointer;
+}
+
+.navbar__auth__links {
+  text-decoration: none;
+}
+
+.navbar__auth__links:first-child {
+  margin-right: 5px;
 }
 
 /* Carousel */
@@ -138,7 +154,7 @@ body {
 	box-shadow: 2px 0 5px 2px var(--grey);
 	border-radius: 20px;
 	color: var(--white);
-  transition: 250ms;
+	transition: 250ms;
 }
 
 .category__item:hover {
