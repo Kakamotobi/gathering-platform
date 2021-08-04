@@ -79,11 +79,11 @@ body {
 }
 
 .navbar__auth__links {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .navbar__auth__links:first-child {
-  margin-right: 5px;
+	margin-right: 5px;
 }
 
 /* Carousel */
@@ -120,6 +120,7 @@ body {
 /* Categories */
 .categories {
 	width: 100%;
+	margin-bottom: 200px;
 	display: flex;
 	justify-content: center;
 }
