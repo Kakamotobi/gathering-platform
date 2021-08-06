@@ -51,11 +51,12 @@ function onLogInSuccess(data) {
 	localStorage.setItem("jwtAccessToken", AccessToken);
 	localStorage.setItem("jwtRefreshToken", RefreshToken);
 
-	setTimeout(issueNewAccessToken, accessTokenExpiryDuration);
-	setTimeout(
-		issueNewRefreshToken,
-		refreshTokenExpiryDuration - 24 * 3600 * 1000
-	);
+	// Silent Refresh
+	// setTimeout(issueNewAccessToken, accessTokenExpiryDuration);
+	// setTimeout(
+	// 	issueNewRefreshToken,
+	// 	refreshTokenExpiryDuration - 24 * 3600 * 1000
+	// );
 }
 
 // --Function for issuing new AccessToken-- //
