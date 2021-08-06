@@ -1,0 +1,170 @@
+:root {
+	--ltGreen: #e7f8f1;
+	--green: #45df99;
+	--drkGreen: #3cc584;
+	--red: #f74135;
+	--white: #fff;
+	--ltGrey: #f9fafc;
+	--grey: #cbcbcb;
+	--drkGrey: #6d6e74;
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-image: url(/assets/images/workout.jpg),
+		url(/assets/images/programming.jpg);
+	background-size: 300px 300px;
+	background-position: bottom 10px left 50px, bottom 10px right 50px;
+	background-repeat: no-repeat;
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+/* Header */
+header {
+	margin: 100px auto 40px;
+}
+
+.logo {
+	font-size: 1.6rem;
+	color: var(--drkGreen);
+	text-decoration: none;
+}
+
+/* Main */
+.form-container {
+	width: 100%;
+	max-width: 360px;
+	padding: 50px 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+	border-radius: 3px;
+	box-shadow: 0 0 5px var(--grey);
+}
+
+h1 {
+	margin-bottom: 40px;
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.login-form {
+	width: 100%;
+}
+
+.login-form-control {
+	height: 55px;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.login-form-control:last-of-type {
+	margin-bottom: 20px;
+}
+
+.login-form__input-control {
+	width: 100%;
+	height: 30px;
+	border: none;
+	border-bottom: 1px solid var(--grey);
+	outline: none;
+	font-family: "Noto Sans KR", sans-serif;
+	transition: 250ms;
+}
+
+.login-form__input-control:hover {
+	border-color: var(--drkGrey);
+}
+
+.login-form-btn {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: var(--green);
+	border: 1px solid var(--green);
+	border-radius: 3px;
+	box-shadow: 2px 2px 5px var(--grey);
+	color: var(--white);
+	cursor: pointer;
+	transition: 250ms;
+}
+
+.login-form-btn:hover {
+	background-color: var(--drkGreen);
+}
+
+.need-to-signup {
+	text-decoration: none;
+	font-size: 0.8rem;
+}
+
+.need-to-signup:hover {
+	text-decoration: underline;
+}
+
+/* Error Styles */
+.error-icon {
+	width: 15px;
+	position: absolute;
+	right: 10px;
+	top: 8px;
+	display: none;
+}
+
+.show-input-error {
+	border-bottom: 1px solid var(--red);
+}
+
+.show-input-success {
+	border-bottom: 1px solid var(--drkGreen);
+}
+
+.show-error-icon {
+	display: block;
+}
+
+.error-msg {
+	text-align: right;
+	color: var(--red);
+	font-size: 0.7rem;
+	font-style: italic;
+}
+
+/* Footer */
+.attribution {
+	text-align: center;
+	font-size: 0.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+	body {
+		background-size: 30%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	body {
+		background-image: none;
+	}
+	.attribution {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.form-container {
+		max-width: 320px;
+	}
+}
