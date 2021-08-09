@@ -31,6 +31,7 @@ const logInAttempt = async (formData) => {
 			if (res.status === 200) {
 				// If login credentials match
 				onLogInSuccess(data);
+				setSuccessFor(password);
 			} else if (res.status === 400) {
 				// If login credentials do not match
 				const { errorMessage } = data;
@@ -48,8 +49,8 @@ function onLogInSuccess(data) {
 	console.log("Login successful");
 	// Store tokens
 	const { AccessToken, RefreshToken } = data;
-	localStorage.setItem("jwtAccessToken", AccessToken);
-	localStorage.setItem("jwtRefreshToken", RefreshToken);
+	localStorage.setItem("AccessToken", AccessToken);
+	localStorage.setItem("RefreshToken", RefreshToken);
 
 	// Silent Refresh
 	// setTimeout(issueNewAccessToken, accessTokenExpiryDuration);
@@ -64,7 +65,7 @@ function issueNewAccessToken(RefreshToken) {
 	console.log("Issued new access token");
 	fetch("http://3.34.235.190:8080/user/refresh", {
 		method: "POST",
-		body: JSON.stringify(localStorage.getItem("jwtRefreshToken")),
+		body: JSON.stringify(localStorage.getItem("RefreshToken")),
 		headers: setHeaders({ "Content-Type": "application/json" }),
 	})
 		.then((res) => {
@@ -72,7 +73,7 @@ function issueNewAccessToken(RefreshToken) {
 		})
 		.then((data) => {
 			const { AccessToken } = data;
-			localStorage.setItem("jwtAccessToken", AccessToken);
+			localStorage.setItem("AccessToken", AccessToken);
 		});
 }
 
@@ -81,7 +82,7 @@ function issueNewRefreshToken() {
 	console.log("Issued new refresh token");
 	fetch("http://3.34.235.190:8080/user/refresh", {
 		method: "POST",
-		body: JSON.stringify(localStorage.getItem("jwtRefreshToken")),
+		body: JSON.stringify(localStorage.getItem("RefreshToken")),
 		headers: setHeaders({ "Content-Type": "application/json" }),
 	})
 		.then((res) => {
@@ -89,17 +90,17 @@ function issueNewRefreshToken() {
 		})
 		.then((data) => {
 			const { RefreshToken } = data;
-			localStorage.setItem("jwtRefreshToken", RefreshToken);
+			localStorage.setItem("RefreshToken", RefreshToken);
 		});
 }
 
 // --Function for setting request headers-- //
 // If JWT Access Token exists, include it by default.
 function setHeaders(headers) {
-	if (localStorage.jwtAccessToken) {
+	if (localStorage.AccessToken) {
 		return {
 			...headers,
-			Authorization: `Bearer ${localStorage.jwtAccessToken}`,
+			Authorization: `Bearer ${localStorage.AccessToken}`,
 		};
 	} else {
 		return headers;
@@ -112,4 +113,11 @@ const setErrorFor = (input, errorMessage) => {
 
 	// Display error message
 	errorMsg.innerText = errorMessage;
+};
+
+// --Function for removing error message-- //
+const setSuccessFor = (input) => {
+	const errorMsg = input.parentElement.querySelector(".error-msg");
+
+	errorMsg.innerText = "";
 };
