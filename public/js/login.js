@@ -53,44 +53,24 @@ function onLogInSuccess(data) {
 	localStorage.setItem("RefreshToken", RefreshToken);
 
 	// Silent Refresh
-	// setTimeout(issueNewAccessToken, accessTokenExpiryDuration);
-	// setTimeout(
-	// 	issueNewRefreshToken,
-	// 	refreshTokenExpiryDuration - 24 * 3600 * 1000
-	// );
+	// setTimeout(issueNewTokens, accessTokenExpiryDuration);
 }
 
 // --Function for issuing new AccessToken-- //
-function issueNewAccessToken(RefreshToken) {
-	console.log("Issued new access token");
+function issueNewTokens() {
+	console.log("Issued new tokens");
 	fetch("http://3.34.235.190:8080/user/refresh", {
 		method: "POST",
-		body: JSON.stringify(localStorage.getItem("RefreshToken")),
-		headers: setHeaders({ "Content-Type": "application/json" }),
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: `${localStorage.getItem("RefreshToken")}`,
+		},
 	})
 		.then((res) => {
 			res.json();
 		})
 		.then((data) => {
-			const { AccessToken } = data;
-			localStorage.setItem("AccessToken", AccessToken);
-		});
-}
-
-// --Function for issuing new RefreshToken-- //
-function issueNewRefreshToken() {
-	console.log("Issued new refresh token");
-	fetch("http://3.34.235.190:8080/user/refresh", {
-		method: "POST",
-		body: JSON.stringify(localStorage.getItem("RefreshToken")),
-		headers: setHeaders({ "Content-Type": "application/json" }),
-	})
-		.then((res) => {
-			res.json();
-		})
-		.then((data) => {
-			const { RefreshToken } = data;
-			localStorage.setItem("RefreshToken", RefreshToken);
+			onLogInSuccess(data);
 		});
 }
 
