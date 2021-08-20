@@ -24,7 +24,9 @@ const logInAttempt = async (formData) => {
 		await fetch("http://3.34.235.190:8080/user/logIn", {
 			method: "POST",
 			body: JSON.stringify(Object.fromEntries(formData)),
-			headers: setHeaders({ "Content-Type": "application/json" }),
+			headers: setHeaders({
+				"Content-Type": "application/json"
+			}),
 		}).then(async (res) => {
 			const data = await res.json();
 
@@ -33,7 +35,9 @@ const logInAttempt = async (formData) => {
 				onLogInSuccess(data);
 			} else if (res.status === 400) {
 				// If login credentials do not match
-				const { errorMessage } = data;
+				const {
+					errorMessage
+				} = data;
 				setErrorFor(password, errorMessage);
 			}
 		});
@@ -47,7 +51,10 @@ const logInAttempt = async (formData) => {
 function onLogInSuccess(data) {
 	console.log("Login successful");
 	// Store tokens
-	const { AccessToken, RefreshToken } = data;
+	const {
+		AccessToken,
+		RefreshToken
+	} = data;
 	localStorage.setItem("jwtAccessToken", AccessToken);
 	localStorage.setItem("jwtRefreshToken", RefreshToken);
 
@@ -63,15 +70,19 @@ function onLogInSuccess(data) {
 function issueNewAccessToken(RefreshToken) {
 	console.log("Issued new access token");
 	fetch("http://3.34.235.190:8080/user/refresh", {
-		method: "POST",
-		body: JSON.stringify(localStorage.getItem("jwtRefreshToken")),
-		headers: setHeaders({ "Content-Type": "application/json" }),
-	})
+			method: "POST",
+			body: JSON.stringify(localStorage.getItem("jwtRefreshToken")),
+			headers: setHeaders({
+				"Content-Type": "application/json"
+			}),
+		})
 		.then((res) => {
 			res.json();
 		})
 		.then((data) => {
-			const { AccessToken } = data;
+			const {
+				AccessToken
+			} = data;
 			localStorage.setItem("jwtAccessToken", AccessToken);
 		});
 }
@@ -80,15 +91,19 @@ function issueNewAccessToken(RefreshToken) {
 function issueNewRefreshToken() {
 	console.log("Issued new refresh token");
 	fetch("http://3.34.235.190:8080/user/refresh", {
-		method: "POST",
-		body: JSON.stringify(localStorage.getItem("jwtRefreshToken")),
-		headers: setHeaders({ "Content-Type": "application/json" }),
-	})
+			method: "POST",
+			body: JSON.stringify(localStorage.getItem("jwtRefreshToken")),
+			headers: setHeaders({
+				"Content-Type": "application/json"
+			}),
+		})
 		.then((res) => {
 			res.json();
 		})
 		.then((data) => {
-			const { RefreshToken } = data;
+			const {
+				RefreshToken
+			} = data;
 			localStorage.setItem("jwtRefreshToken", RefreshToken);
 		});
 }

@@ -1,0 +1,49 @@
+:root {
+  --ltGreen: #e7f8f1;
+  --green: #45df99;
+  --drkGreen: #3cc584;
+  --red: #f74135;
+  --white: #fff;
+  --vryLttGrey: #f9fafc;
+  --ltGrey: #cbcbcb;
+  --grey: #ababab;
+  --drkGrey: #6d6e74;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+}
+fieldset{
+  padding: 10px
+}
+
+.category {
+  margin-right: 10px;
+}
+
+#start_at,#finish_at{
+  margin-left:20px;
+}
+#fee{
+  margin-left:66px;
+}
+#frequency,#numOfPeople,#place,#min_age,#max_age{
+  margin-left:34px;
+}
+
+#thumbnail{
+  color: var(--red);
+  margin-left:30px
+}
