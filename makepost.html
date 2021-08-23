@@ -1,134 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Quill -->
+		<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+		<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+		<!-- Stylesheet -->
+		<link rel="stylesheet" href="public/css/makepost.css" />
+		<title>게시글 작성 페이지</title>
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="public/css/makepost.css">
-  <title>게시글 작성 페이지</title>
-</head>
+	<body>
+		<!-- Main Content -->
+		<h1>게시글 작성</h1>
 
-<body>
-  <h1>게시글 작성 페이지</h1><br>
-  <form action="#" method="POST" class="post-form">
-    <fieldset>
-      <legend>Choose your category</legend>
+		<form action="#" method="POST" class="post-form">
+			<div class="top-container">
+				<div class="thumbnail-container">
+					<div id="image-container"></div>
+					<input type="file" id="thumbnail-input" accept="image/*" />
+				</div>
 
-      <div>
-        <input type="checkbox" id="category__sport" class="category" name="category" value="CG_01"
-          onclick="checkOnlyOne(this)">
-        <label for="category__sport">운동</label>
-      </div>
+				<div class="top-container__right">
+					<div class="top-container__right__top-wrapper">
+						<h2 class="input-title">모임명</h2>
+						<input
+							type="text"
+							id="title-input"
+							name="title"
+							placeholder="모임명"
+							required
+						/>
+					</div>
 
-      <div>
-        <input type="checkbox" id="category__study" class="category" name="category" value="CG_02" onclick="
-          checkOnlyOne(this)">
-        <label for="category__study">공부</label>
-      </div>
+					<div class="top-container__right__bottom-wrapper">
+						<div class="categories-container">
+							<h2 class="input-title">카테고리</h2>
+							<div class="category-item">
+								<input
+									type="checkbox"
+									class="category"
+									id="category__sport"
+									name="category"
+									value="CG_01"
+									onclick="checkOnlyOne(this)"
+								/>
+								<label for="category__sport">운동</label>
+							</div>
+							<div class="category-item">
+								<input
+									type="checkbox"
+									class="category"
+									id="category__study"
+									name="category"
+									value="CG_02"
+									onclick="checkOnlyOne(this)"
+								/>
+								<label for="category__study">공부</label>
+							</div>
+							<div class="category-item">
+								<input
+									type="checkbox"
+									class="category"
+									id="category__habit"
+									name="category"
+									value="CG_03"
+									onclick="checkOnlyOne(this)"
+								/>
+								<label for="category__habit">생활습관</label>
+							</div>
+							<div class="category-item">
+								<input
+									type="checkbox"
+									class="category"
+									id="category__hobby"
+									name="category"
+									value="CG_04"
+									onclick="checkOnlyOne(this)"
+								/>
+								<label for="category__hobby">취미</label>
+							</div>
+							<div class="category-item">
+								<input
+									type="checkbox"
+									class="category"
+									id="category__emotions"
+									name="category"
+									value="CG_05"
+									onclick="checkOnlyOne(this)"
+								/>
+								<label for="category__emotions">감정관리</label>
+							</div>
+							<div class="category-item">
+								<input
+									type="checkbox"
+									class="category"
+									id="category__finance"
+									name="category"
+									value="CG_06"
+									onclick="checkOnlyOne(this)"
+								/>
+								<label for="category__finance">돈관리</label>
+							</div>
+							<div class="category-item">
+								<input
+									type="checkbox"
+									class="category"
+									id="category__language"
+									name="category"
+									value="CG_07"
+									onclick="checkOnlyOne(this)"
+								/>
+								<label for="category__language">외국어</label>
+							</div>
+						</div>
 
-      <div>
-        <input type="checkbox" id="category__habit" class="category" name="category" value="CG_03"
-          onclick="checkOnlyOne(this)">
-        <label for="category__habit">생활습관</label>
-      </div>
+						<div class="details-container-one">
+							<div class="form-control">
+								<h2 class="input-title">모임 시작일</h2>
+								<input type="date" id="start-at" name="start_at" required />
+							</div>
 
-      <div>
-        <input type="checkbox" id="category__hobby" class="category" name="category" value="CG_04"
-          onclick="checkOnlyOne(this)">
-        <label for="category__hobby">취미</label>
-      </div>
+							<div class="form-control">
+								<h2 class="input-title">모임 빈도</h2>
+								<input type="text" id="frequency" name="frequency" required />
+							</div>
 
-      <div>
-        <input type="checkbox" id="category__emotions" class="category" name="category" value="CG_05"
-          onclick="checkOnlyOne(this)">
-        <label for="category__emotions">감정관리</label>
-      </div>
+							<div class="form-control">
+								<h2 class="input-title">모임 장소</h2>
+								<input type="text" id="place" name="place" required />
+							</div>
 
-      <div>
-        <input type="checkbox" id="category__finance" class="category" name="category" value="CG_06"
-          onclick="checkOnlyOne(this)">
-        <label for="category__finance">돈관리</label>
-      </div>
+							<div class="form-control">
+								<h2 class="input-title">최소 나이</h2>
+								<input type="text" id="min-age" name="min_age" required />
+							</div>
+						</div>
 
-      <div>
-        <input type="checkbox" id="category__language" class="category" name="category" value="CG_07"
-          onclick="checkOnlyOne(this)">
-        <label for="category__language">외국어</label>
-      </div>
-    </fieldset><br>
+						<div class="details-container-two">
+							<div class="form-control">
+								<h2 class="input-title">모임 종료일</h2>
+								<input type="date" id="finish-at" name="finish_at" required />
+							</div>
 
-    <section>
-      <div class="form-example">
-        <label for="start_at">- 모임 시작일</label>
-        <input type="text" name="start_at" id="start_at" required>
-      </div>
+							<div class="form-control">
+								<h2 class="input-title">모임 인원</h2>
+								<input
+									type="number"
+									id="numOfPeople"
+									name="numOfPeople"
+									required
+								/>
+							</div>
 
-      <div class="form-example">
-        <label for="finish_at">- 모임 종료일</label>
-        <input type="text" name="finish_at" id="finish_at" required>
-      </div>
+							<div class="form-control">
+								<h2 class="input-title">회비</h2>
+								<input type="text" id="fee" name="fee" required />
+							</div>
 
-      <div class="form-example">
-        <label for="frequency">- 모임 빈도</label>
-        <input type="text" name="frequency" id="frequency" required>
-      </div>
+							<div class="form-control">
+								<h2 class="input-title">최대 나이</h2>
+								<input type="text" id="max-age" name="max_age" required />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <div class="form-example">
-        <label for="numOfPeople">- 모임 인원</label>
-        <input type="text" name="numOfPeople" id="numOfPeople" required>
-      </div>
+			<!-- Text Editor -->
+			<div id="editor"></div>
 
-      <div class="form-example">
-        <label for="place">- 모임 장소</label>
-        <input type="text" name="place" id="place" required>
-      </div>
+			<button type="submit" class="submit-btn">제출하기</button>
+		</form>
 
-      <div class="form-example">
-        <label for="fee">- 회비</label>
-        <input type="text" name="fee" id="fee" required>
-      </div>
-
-      <div class="form-example">
-        <label for="min_age">- 최소 나이</label>
-        <input type="text" name="min_age" id="min_age" required>
-      </div>
-
-      <div class="form-example">
-        <label for="max_age">- 최대 나이</label>
-        <input type="text" name="max_age" id="max_age" required>
-      </div><br>
-
-      <div class="form-example">
-        <label for="thumbnail">- 썸네일</label>
-        <input type="file" id="thumbnail" accept="image/*" onchange="setThumbnail(event);" />
-        <div id="image_container"></div>
-      </div>
-
-      <div class="form-example"><br>
-        <label for="title">- 제목</label>
-        <input type="text" name="title" id="title" required>
-      </div>
-
-      <div class="buttons">
-        <input type="button" class="BOLD" value="Bold" onclick="document.execCommand('bold')" />
-        <input type="button" class="ITALIC" value="Italic" onclick="document.execCommand('Italic')" />
-        <input type="button" class="UNDERBAR" value="Underline" onclick="document.execCommand('Underline')" />
-        <input type="button" class="aignLeft" value="왼쪽 정렬" onclick="document.execCommand('justifyleft')" />
-        <input type="button" class="aignCenter" value="가운데 정렬" onclick="document.execCommand('justifycenter')" />
-        <input type="button" class="aignRight" value="오른쪽 정렬" onclick="document.execCommand('justifyright')" />
-      </div>
-      <br>
-      <div id="div" style='border: solid; height: 300px; width: 400px' contenteditable="true"></div>
-
-      <div><button type="submit">제출하기</button></div>
-    </section>
-  </form>
-
-  <script src="public/js/makepost.js"></script>
-</body>
-
+		<script src="public/js/makepost.js"></script>
+	</body>
 </html>
