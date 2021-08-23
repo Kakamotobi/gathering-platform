@@ -19,8 +19,8 @@ const quill = new Quill("#editor", options);
 
 // -----Form Submit----- //
 const postForm = document.querySelector(".post-form");
-const thumbnail = document.querySelector("#thumbnail");
-const editorContent = document.querySelector("#div");
+const thumbnail = document.querySelector("#thumbnail-input");
+const editorContent = document.querySelector(".ql-editor");
 
 postForm.addEventListener("submit", (evt) => {
 	evt.preventDefault();
@@ -31,6 +31,9 @@ postForm.addEventListener("submit", (evt) => {
 	const finishAt = postFormData.get("finish_at").replace(/-/g, "");
 	postFormData.set("start_at", startAt);
 	postFormData.set("finish_at", finishAt);
+
+	const content = editorContent.innerHTML;
+	postFormData.set("content", content);
 
 	const thumbnailData = new FormData();
 	thumbnailData.append("multipartFile", thumbnail.files[0]);
@@ -45,7 +48,6 @@ postForm.addEventListener("submit", (evt) => {
 		const { Thumbnail_URL } = data;
 
 		postFormData.append("thumbnail", Thumbnail_URL);
-		postFormData.append("content", editorContent);
 
 		fetch("http://3.34.235.190:8080/board", {
 			method: "POST",
@@ -100,8 +102,3 @@ function setHeaders(headers) {
 		return headers;
 	}
 }
-
-// 게시글 페이지  ==> 이거까지 해도 좋습니다 ==> 댓글까지 ex) 1페이지에 댓글 몇개, 댓글에 대댓글 달때 어떤식으로 보일지
-// 게시판 등록 페이지 금요일까지 디자인 및 기능  // 필수
-// 리스트 페이지  ==> 이거까지 해도 좋습니다
-// 댓글 대댓글 같은 것을 어떤식으로 디자인할지 // 대댓글 쓸때 들여쓰기 1개만 하기
