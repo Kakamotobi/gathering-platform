@@ -4,12 +4,12 @@
 	--drkGreen: #3cc584;
 	--red: #f74135;
 	--white: #fff;
-	--vryLttGrey: #f9fafc;
+	--vryLtGrey: #f9fafc;
 	--ltGrey: #cbcbcb;
 	--grey: #ababab;
 	--drkGrey: #6d6e74;
 	--black: #000;
-	--bg: #fbfbfb;;
+	--background: #fbfbfb;;
 	--sectionBorder: #f5f5f5;;
 }
 
@@ -26,7 +26,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: var(--bg);
+	background-color: var(--background);
 
 	font-family: "Noto Sans KR", sans-serif;
 }
@@ -53,7 +53,7 @@ body {
 
 .navbar-wrapper .logo {
 	text-decoration: none;
-	color: var(--black);
+	color: var(--drkGreen);
 	font-size: 20px;
 	font-weight: 700;
 }
