@@ -1,0 +1,140 @@
+@import url(colors.css);
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+/* -----Main----- */
+h1 {
+	margin: 30px auto 50px;
+}
+
+.post-form {
+	width: 100%;
+	max-width: 900px;
+	margin-bottom: 200px;
+	display: flex;
+	flex-direction: column;
+}
+
+.input-title {
+	color: var(--drkGreen);
+	font-size: 1rem;
+}
+
+.top-container {
+	width: 100%;
+	margin-bottom: 50px;
+	display: flex;
+}
+
+.thumbnail-container {
+	width: 300px;
+	height: 330px;
+	margin-right: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#image-container {
+	width: 300px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--grey);
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.thumbnail {
+	/* max-width: 100%;
+	max-height: 100%; */
+	object-fit: cover;
+}
+
+#thumbnail-input {
+	width: 178px;
+}
+
+.top-container__right {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.top-container__right__top-wrapper {
+	width: 100%;
+	margin-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#title-input {
+	height: 30px;
+	border: 1px solid var(--grey);
+	border-radius: 3px;
+}
+
+.top-container__right__bottom-wrapper {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.form-control input {
+	height: 25px;
+	border: 1px solid var(--grey);
+	border-radius: 3px;
+}
+
+.submit-btn {
+	width: 100px;
+	height: 35px;
+	align-self: flex-end;
+	background-color: var(--green);
+	border: none;
+	border-radius: 3px;
+	box-shadow: 2px 2px 5px var(--grey);
+	color: var(--white);
+	cursor: pointer;
+	transition: 250ms;
+}
+
+.submit-btn:hover {
+	background-color: var(--drkGreen);
+}
+
+/* -----Text Editor----- */
+.editor-container {
+	border-radius: 3px;
+}
+
+#editor {
+	width: 100%;
+	min-height: 300px;
+	margin-bottom: 20px;
+}
+
+.ql-toolbar {
+	border-radius: 3px 3px 0 0;
+}
+.ql-container {
+	border-radius: 0 0 3px 3px;
+}

@@ -24,7 +24,9 @@ const logInAttempt = async (formData) => {
 		await fetch("http://3.34.235.190:8080/user/logIn", {
 			method: "POST",
 			body: JSON.stringify(Object.fromEntries(formData)),
-			headers: setHeaders({ "Content-Type": "application/json" }),
+			headers: setHeaders({
+				"Content-Type": "application/json"
+			}),
 		}).then(async (res) => {
 			const data = await res.json();
 
@@ -34,7 +36,9 @@ const logInAttempt = async (formData) => {
 				setSuccessFor(password);
 			} else if (res.status === 400) {
 				// If login credentials do not match
-				const { errorMessage } = data;
+				const {
+					errorMessage
+				} = data;
 				setErrorFor(password, errorMessage);
 			}
 		});
@@ -48,9 +52,13 @@ const logInAttempt = async (formData) => {
 function onLogInSuccess(data) {
 	console.log("Login successful");
 	// Store tokens
-	const { AccessToken, RefreshToken } = data;
-	localStorage.setItem("AccessToken", AccessToken);
-	localStorage.setItem("RefreshToken", RefreshToken);
+
+	const {
+		AccessToken,
+		RefreshToken
+	} = data;
+	localStorage.setItem("jwtAccessToken", AccessToken);
+	localStorage.setItem("jwtRefreshToken", RefreshToken);
 
 	// Silent Refresh
 	// setTimeout(issueNewTokens, accessTokenExpiryDuration);
@@ -60,17 +68,41 @@ function onLogInSuccess(data) {
 function issueNewTokens() {
 	console.log("Issued new tokens");
 	fetch("http://3.34.235.190:8080/user/refresh", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			Authorization: `${localStorage.getItem("RefreshToken")}`,
-		},
-	})
+			method: "POST",
+			body: JSON.stringify(localStorage.getItem("jwtRefreshToken")),
+			headers: setHeaders({
+				"Content-Type": "application/json"
+			}),
+		})
 		.then((res) => {
 			res.json();
 		})
 		.then((data) => {
-			onLogInSuccess(data);
+			const {
+				AccessToken
+			} = data;
+			localStorage.setItem("jwtAccessToken", AccessToken);
+		});
+}
+
+// --Function for issuing new RefreshToken-- //
+function issueNewRefreshToken() {
+	console.log("Issued new refresh token");
+	fetch("http://3.34.235.190:8080/user/refresh", {
+			method: "POST",
+			body: JSON.stringify(localStorage.getItem("jwtRefreshToken")),
+			headers: setHeaders({
+				"Content-Type": "application/json"
+			}),
+		})
+		.then((res) => {
+			res.json();
+		})
+		.then((data) => {
+			const {
+				RefreshToken
+			} = data;
+			localStorage.setItem("jwtRefreshToken", RefreshToken);
 		});
 }
 
@@ -93,11 +125,4 @@ const setErrorFor = (input, errorMessage) => {
 
 	// Display error message
 	errorMsg.innerText = errorMessage;
-};
-
-// --Function for removing error message-- //
-const setSuccessFor = (input) => {
-	const errorMsg = input.parentElement.querySelector(".error-msg");
-
-	errorMsg.innerText = "";
 };
