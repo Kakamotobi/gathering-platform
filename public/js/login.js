@@ -33,6 +33,7 @@ const logInAttempt = async (formData) => {
 			if (res.status === 200) {
 				// If login credentials match
 				onLogInSuccess(data);
+				setSuccessFor(password);
 			} else if (res.status === 400) {
 				// If login credentials do not match
 				const {
@@ -51,6 +52,7 @@ const logInAttempt = async (formData) => {
 function onLogInSuccess(data) {
 	console.log("Login successful");
 	// Store tokens
+
 	const {
 		AccessToken,
 		RefreshToken
@@ -59,16 +61,12 @@ function onLogInSuccess(data) {
 	localStorage.setItem("jwtRefreshToken", RefreshToken);
 
 	// Silent Refresh
-	// setTimeout(issueNewAccessToken, accessTokenExpiryDuration);
-	// setTimeout(
-	// 	issueNewRefreshToken,
-	// 	refreshTokenExpiryDuration - 24 * 3600 * 1000
-	// );
+	// setTimeout(issueNewTokens, accessTokenExpiryDuration);
 }
 
 // --Function for issuing new AccessToken-- //
-function issueNewAccessToken(RefreshToken) {
-	console.log("Issued new access token");
+function issueNewTokens() {
+	console.log("Issued new tokens");
 	fetch("http://3.34.235.190:8080/user/refresh", {
 			method: "POST",
 			body: JSON.stringify(localStorage.getItem("jwtRefreshToken")),
@@ -111,10 +109,10 @@ function issueNewRefreshToken() {
 // --Function for setting request headers-- //
 // If JWT Access Token exists, include it by default.
 function setHeaders(headers) {
-	if (localStorage.jwtAccessToken) {
+	if (localStorage.AccessToken) {
 		return {
 			...headers,
-			Authorization: `Bearer ${localStorage.jwtAccessToken}`,
+			Authorization: `Bearer ${localStorage.AccessToken}`,
 		};
 	} else {
 		return headers;
