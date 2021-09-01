@@ -73,11 +73,6 @@ postForm.addEventListener("submit", async (evt) => {
 	uploadContentsToServer(postFormData);
 });
 
-// -----Display Thumbnail----- //
-thumbnailInput.addEventListener("change", (evt) => {
-	setThumbnail(evt);
-});
-
 // -----API Handlers----- //
 // Thumbnail API
 const uploadThumbnailToServer = async (thumbnailData) => {
@@ -144,6 +139,11 @@ const uploadImgToServer = async (imgFormData) => {
 			console.log(err);
 		});
 };
+
+// -----Display Thumbnail----- //
+thumbnailInput.addEventListener("change", (evt) => {
+	setThumbnail(evt);
+});
 
 // -----Utility Functions----- //
 // Display Thumbnail
