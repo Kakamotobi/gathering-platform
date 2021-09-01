@@ -1,13 +1,4 @@
-:root {
-	--ltGreen: #e7f8f1;
-	--green: #45df99;
-	--drkGreen: #3cc584;
-	--red: #f74135;
-	--white: #fff;
-	--ltGrey: #f9fafc;
-	--grey: #cbcbcb;
-	--drkGrey: #6d6e74;
-}
+@import url(colors.css);
 
 *,
 *::before,
