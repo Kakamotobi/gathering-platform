@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Stylesheet -->
+		<link rel="stylesheet" href="/public/css/show.css" />
+		<title>Board Details Page</title>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<div class="navbar__wrapper">
+			<nav class="navbar">
+				<div class="navbar__logo__container">
+					<a href="/" class="logo">Gathering Platform</a>
+				</div>
+
+				<div class="navbar__inner-wrapper">
+					<div class="navbar__search">
+						<form action="/">
+							<input
+								type="text"
+								placeholder="검색"
+								class="navbar__search__input"
+							/>
+							<button id="navbar__search__btn">
+								<i class="fas fa-search"></i>
+							</button>
+						</form>
+					</div>
+
+					<div class="navbar__auth">
+						<a href="/login.html" class="navbar__auth__links">로그인</a>
+						<a href="/signup.html" class="navbar__auth__links">회원가입</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+
+		<div class="back-btn__wrapper">
+			<div class="back-btn__container">
+				<a href="/category" class="back-btn">&#60; Back</a>
+			</div>
+		</div>
+
+		<div id="root"></div>
+
+		<script src="/public/js/show.js"></script>
+	</body>
+</html>
